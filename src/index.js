@@ -1,5 +1,9 @@
-import { Todo } from './class/todo.class';
+import { Todo, TodoList } from './classes';
 import './styles.css';
 
+const todoList = new TodoList();
 const tarea = new Todo('Aprender Javascript');
-console.log(tarea);
+
+todoList.insertarTodo(tarea);
+
+console.log(todoList);
