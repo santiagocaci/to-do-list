@@ -42,8 +42,11 @@ divTodoList.addEventListener('click', (e) => {
   const todoElto = e.target.parentElement.parentElement;
   const todoId = todoElto.getAttribute('data-id');
 
-  if(nombreElto.includes('input')){
+  if (nombreElto.includes('input')) {
     todoList.marcarCompletado(todoId);
     todoElto.classList.toggle('completed');
+  } else if (nombreElto.includes('button')) {
+    todoList.eliminarTodo(todoId);
+    divTodoList.removeChild(todoElto)
   }
 });
