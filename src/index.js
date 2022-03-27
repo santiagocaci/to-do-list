@@ -3,11 +3,11 @@ import { crearTodoHtml } from './js/componentes';
 import './styles.css';
 
 export const todoList = new TodoList();
-const tarea = new Todo('Aprender Javascript!!!');
 
-todoList.insertarTodo(tarea);
+console.log(todoList.todos);
 
-
-console.log(todoList);
-
-crearTodoHtml(tarea);
+// Dos maneras de hacerlo
+// todoList.todos.forEach((todo) => {
+//   crearTodoHtml(todo);
+// });
+todoList.todos.forEach(crearTodoHtml);
