@@ -1,3 +1,5 @@
+import { Todo } from "./todo.class";
+
 export class TodoList {
   constructor() {
     // this.todos = [];
@@ -36,9 +38,12 @@ export class TodoList {
   }
 
   cargarLocalStorage() {
-    //   // JSON.parse transforma el JSON en un objeto
+    // JSON.parse transforma el JSON en un objeto
     this.todos = (localStorage.getItem('todo'))
       ? JSON.parse(localStorage.getItem('todo'))
       : [];
+    // this.todos = this.todos.map(obj => Todo.fromJson(obj));
+    // otra manera de hacerlo
+    this.todos = this.todos.map(Todo.fromJson);
   }
 }
