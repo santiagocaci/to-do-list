@@ -6,6 +6,8 @@ import { todoList } from "../index.js";
 const divTodoList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
 const btnBorrar = document.querySelector('.clear-completed');
+const ulFiltros = document.querySelector('.filters');
+const anchorFiltros = document.querySelectorAll('.filtros');
 
 export const crearTodoHtml = (todo) => {
   const htmlTodo = `
@@ -60,4 +62,35 @@ btnBorrar.addEventListener('click', (e) => {
       divTodoList.removeChild(elto);
     }
   }
-})
+});
+
+ulFiltros.addEventListener('click', (e) => {
+  const filtro = e.target.text;
+  if (!filtro) { return; };
+
+  anchorFiltros.forEach(elto => {
+    elto.classList.remove('selected');
+  });
+
+  e.target.classList.add('selected');
+
+  for (const elto of divTodoList.children) {
+
+    elto.classList.remove('hidden');
+    const completado = elto.classList.contains('completed');
+
+    switch (filtro) {
+      case 'Pendientes':
+        if (completado) {
+          elto.classList.add('hidden');
+        }
+        break;
+      case 'Completados':
+        if (!completado) {
+          elto.classList.add('hidden');
+        }
+        break;
+    }
+  }
+});
+
