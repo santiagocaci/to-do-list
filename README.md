@@ -2,4 +2,9 @@
 
 Para usar este repositorio, deberán ejecutar el comando de ```npm install```
 
-Pero esto lo veremos en la siguiente sección
+Para ver el proyecto ejecutar ```npm start```
+
+Para obtener la carpeta dist ejecutar ```npm run build```
+
+Para obtener la carpeta de desarrollador ````npm run buil:dev````
+
