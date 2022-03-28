@@ -1,20 +1,20 @@
-const HtmlWebpack    = require('html-webpack-plugin')
+const HtmlWebpack = require('html-webpack-plugin')
 const MiniCssExtract = require('mini-css-extract-plugin');
-const CopyPlugin     = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 
 const CssMinimizer = require('css-minimizer-webpack-plugin');
-const Terser       = require('terser-webpack-plugin');
+const Terser = require('terser-webpack-plugin');
 
 module.exports = {
-    
+
     mode: "production",
 
     output: {
         clean: true,
         filename: 'main.[contenthash].js'
     },
-    
+
 
     module: {
         rules: [
@@ -28,11 +28,11 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /styles.css$/,
-                use: [ 'style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /styles.css$/,
-                use: [ MiniCssExtract.loader, 'css-loader' ]
+                use: [MiniCssExtract.loader, 'css-loader']
             },
             {
                 test: /\.(png|jpe?g|gif)$/,
@@ -42,10 +42,10 @@ module.exports = {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {
-                  loader: "babel-loader",
-                  options: {
-                    presets: ['@babel/preset-env']
-                  }
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
                 }
             }
         ]
@@ -65,7 +65,7 @@ module.exports = {
             // filename: 'index.html',
             template: './src/index.html'
         }),
-        
+
         new MiniCssExtract({
             filename: '[name].[fullhash].css',
             ignoreOrder: false
@@ -73,7 +73,11 @@ module.exports = {
 
         new CopyPlugin({
             patterns: [
-                { from: 'src/assets/', to: 'assets/' }
+                {
+                    from: 'src/assets/',
+                    to: 'assets/',
+                    noErrorOnMissing: true
+                }
             ]
         })
     ]
